@@ -1,0 +1,391 @@
+:root {
+  --bg: #050505;
+  --panel: #0b0b0b;
+  --panel-2: #101010;
+  --line: #2a2a2a;
+  --amber: #ffb000;
+  --text: #f4f4f4;
+  --muted: #8f8f8f;
+  --green: #00e676;
+  --red: #ff5252;
+  --cyan: #00bcd4;
+  --header-h: 34px;
+}
+
+* { box-sizing: border-box; }
+
+* {
+  scrollbar-color: var(--amber) #0a0a0a;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-left: 1px solid #1f1f1f;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--amber);
+  border: 2px solid #0a0a0a;
+  border-radius: 2px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #ffc247;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #0a0a0a;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+}
+
+header {
+  height: var(--header-h);
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  background: #000;
+  border-bottom: 1px solid var(--line);
+  color: var(--amber);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.brand-code {
+  color: #000;
+  background: var(--amber);
+  border-radius: 2px;
+  padding: 2px 5px;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.brand-title {
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ticker {
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  font-size: 11px;
+}
+
+.layout {
+  height: calc(100vh - var(--header-h));
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  overflow: hidden;
+}
+
+aside {
+  min-width: 0;
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+  padding: 8px;
+}
+
+main {
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.panel-heading {
+  color: var(--amber);
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+label {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin: 7px 0 3px;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  height: 26px;
+  background: #050505;
+  color: var(--amber);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 3px 6px;
+  font-family: inherit;
+  font-size: 11px;
+}
+
+button {
+  cursor: pointer;
+  margin-top: 8px;
+  background: var(--amber);
+  color: #000;
+  font-weight: 800;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.pager {
+  display: grid;
+  grid-template-columns: 28px 1fr 28px;
+  gap: 4px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.pager button {
+  height: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+#pageInfo {
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--amber);
+  background: #050505;
+  font-size: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(92px, 1fr));
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.card {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 6px 8px;
+  min-height: 46px;
+}
+
+.card .label {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1;
+  margin: 0 0 5px;
+}
+
+.card .value {
+  color: var(--amber);
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.tabs {
+  height: 30px;
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 6px;
+}
+
+.tab {
+  width: auto;
+  height: 29px;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: 2px 2px 0 0;
+  background: #101010;
+  color: var(--amber);
+  border: 1px solid var(--line);
+  border-bottom: 0;
+}
+
+.tab.active {
+  background: var(--amber);
+  color: #000;
+}
+
+.panel {
+  display: none;
+  height: calc(100vh - var(--header-h) - 8px - 46px - 6px - 30px - 6px - 8px);
+  min-height: 0;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 6px;
+  flex-direction: column;
+}
+
+.panel.active { display: flex; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #202020;
+  padding: 4px 6px;
+  line-height: 1.15;
+  text-align: right;
+  white-space: nowrap;
+}
+
+th {
+  color: var(--amber);
+  background: #090909;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+td:first-child,
+th:first-child,
+td:nth-child(2),
+th:nth-child(2) {
+  text-align: left;
+}
+
+tr:hover { background: #161616; }
+
+.buy { color: var(--green); font-weight: 800; }
+.hold { color: var(--amber); font-weight: 800; }
+.sell { color: var(--red); font-weight: 800; }
+
+.split {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 6px;
+  min-height: 0;
+}
+
+.chart {
+  width: 100%;
+  height: 300px;
+  background: #070707;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+
+.chart.tall { height: 360px; }
+
+.section-title {
+  color: var(--amber);
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.push { margin-top: 6px; }
+
+.scroll {
+  overflow: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+#stock .grid {
+  grid-template-columns: repeat(6, minmax(82px, 1fr));
+}
+
+#stock .scroll {
+  min-height: 120px;
+}
+
+#industryPanel .scroll {
+  min-height: 0;
+}
+
+#portfolio {
+  overflow: auto;
+}
+
+#portfolio .split {
+  flex: 1 1 auto;
+  min-height: 300px;
+}
+
+#portfolio .split > .scroll,
+#industryPanel .split > .scroll {
+  min-height: 0;
+}
+
+@media (max-width: 1000px) {
+  body { position: static; overflow: auto; }
+  .layout {
+    height: auto;
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+  aside {
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  main {
+    height: auto;
+    overflow: visible;
+  }
+  .grid,
+  #stock .grid {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+  .panel {
+    height: auto;
+    min-height: 420px;
+    overflow: visible;
+  }
+  .split { grid-template-columns: 1fr; }
+}

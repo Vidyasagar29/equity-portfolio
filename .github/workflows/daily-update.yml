@@ -1,0 +1,45 @@
+name: Daily NIFTY 500 Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 18:00, 20:00, 22:00 IST
+    - cron: "30 12 * * 1-5"
+    - cron: "30 14 * * 1-5"
+    - cron: "30 16 * * 1-5"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily update pipeline
+        run: python daily_update.py
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data terminal/data
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Daily market update"
+            git push
+          fi
