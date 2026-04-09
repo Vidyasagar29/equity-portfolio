@@ -5,7 +5,7 @@ import pandas as pd
 
 
 DATA_DIR = Path("data")
-OUT_DIR = Path("terminal") / "data"
+OUT_DIR = Path("docs") / "data"
 
 
 def read_csv(name):

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NIFTY 500 Terminal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="brand-code">N500</span>
+      <span class="brand-title">EQUITY TERMINAL</span>
+    </div>
+    <div class="ticker" id="ticker">LOADING MARKET DATA...</div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="small panel-heading">CTRL</div>
+
+      <label>INDUSTRY</label>
+      <select id="industry"></select>
+
+      <label>RATING</label>
+      <select id="rating">
+        <option>ALL</option>
+        <option>BUY</option>
+        <option>HOLD</option>
+        <option>SELL</option>
+      </select>
+
+      <label>SYMBOL SEARCH</label>
+      <input id="search" placeholder="RELIANCE">
+
+      <label>DRILLDOWN SYMBOL</label>
+      <select id="symbol"></select>
+
+      <label>ROWS</label>
+      <select id="rows">
+        <option selected>25</option>
+        <option>50</option>
+        <option>100</option>
+        <option>200</option>
+        <option>500</option>
+      </select>
+
+      <div class="pager">
+        <button id="prevPage" type="button">◀</button>
+        <span id="pageInfo">1-25</span>
+        <button id="nextPage" type="button">▶</button>
+      </div>
+
+      <button id="refresh">REFRESH VIEW</button>
+      <p class="small" id="dbStatus"></p>
+    </aside>
+
+    <main>
+      <div class="grid">
+        <div class="card"><div class="label">UNIVERSE</div><div class="value" id="mUniverse">-</div></div>
+        <div class="card"><div class="label">BUY</div><div class="value buy" id="mBuy">-</div></div>
+        <div class="card"><div class="label">HOLD</div><div class="value hold" id="mHold">-</div></div>
+        <div class="card"><div class="label">SELL</div><div class="value sell" id="mSell">-</div></div>
+        <div class="card"><div class="label">AVG SCORE</div><div class="value" id="mScore">-</div></div>
+        <div class="card"><div class="label">INDUSTRIES</div><div class="value" id="mIndustries">-</div></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="monitor">MONITOR</button>
+        <button class="tab" data-tab="portfolio">PORTFOLIO</button>
+        <button class="tab" data-tab="stock">STOCK</button>
+        <button class="tab" data-tab="industryPanel">INDUSTRIES</button>
+        <button class="tab" data-tab="database">DATABASE</button>
+      </div>
+
+      <section class="panel active" id="monitor">
+        <h2 class="section-title">RANKED MONITOR</h2>
+        <div class="scroll"><table id="rankTable"></table></div>
+      </section>
+
+      <section class="panel" id="portfolio">
+        <h2 class="section-title">PORTFOLIO</h2>
+        <div class="grid">
+          <div class="card"><div class="label">NAV 100</div><div class="value" id="pNav100">-</div></div>
+          <div class="card"><div class="label">TOTAL NAV</div><div class="value" id="pNav">-</div></div>
+          <div class="card"><div class="label">CASH</div><div class="value" id="pCash">-</div></div>
+          <div class="card"><div class="label">HOLDINGS</div><div class="value" id="pHoldings">-</div></div>
+          <div class="card"><div class="label">POSITIONS</div><div class="value" id="pPositions">-</div></div>
+          <div class="card"><div class="label">TRADES</div><div class="value" id="pTrades">-</div></div>
+        </div>
+        <div class="split">
+          <canvas class="chart" id="navChart" width="900" height="300"></canvas>
+          <div class="scroll"><table id="portfolioTable"></table></div>
+        </div>
+        <h2 class="section-title push">RECENT TRADES</h2>
+        <div class="scroll"><table id="tradesTable"></table></div>
+      </section>
+
+      <section class="panel" id="stock">
+        <h2 class="section-title" id="stockTitle">STOCK</h2>
+        <div class="grid">
+          <div class="card"><div class="label">TREND</div><div class="value" id="sClose">-</div></div>
+          <div class="card"><div class="label">SCORE</div><div class="value" id="sScore">-</div></div>
+          <div class="card"><div class="label">RATING</div><div class="value" id="sRating">-</div></div>
+          <div class="card"><div class="label">MOMENTUM</div><div class="value" id="sRsi">-</div></div>
+          <div class="card"><div class="label">IND REL</div><div class="value" id="sReturn">-</div></div>
+          <div class="card"><div class="label">VOL ADJ</div><div class="value" id="sVol">-</div></div>
+        </div>
+        <div class="split stock-split">
+          <canvas class="chart" id="priceChart" width="900" height="360"></canvas>
+          <canvas class="chart" id="indicatorChart" width="760" height="360"></canvas>
+        </div>
+        <h2 class="section-title push">RECENT HISTORY</h2>
+        <div class="scroll stock-history"><table id="historyTable"></table></div>
+      </section>
+
+      <section class="panel" id="industryPanel">
+        <h2 class="section-title">INDUSTRY SCOREBOARD</h2>
+        <div class="split">
+          <canvas class="chart tall" id="industryChart" width="900" height="420"></canvas>
+          <div class="scroll"><table id="industryTable"></table></div>
+        </div>
+      </section>
+
+      <section class="panel" id="database">
+        <h2 class="section-title">DATABASE STATUS</h2>
+        <div class="scroll"><table id="dbTable"></table></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="data/terminal_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

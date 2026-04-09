@@ -30,7 +30,7 @@ This project is now a CSV-first NIFTY 500 pipeline built for GitHub Actions.
 
 4. `export_terminal_data.py`
    - reads the CSV files
-   - writes `terminal/data/terminal_data.js`
+   - writes `docs/data/terminal_data.js`
    - the dashboard reads that file directly
 
 
@@ -48,9 +48,9 @@ This project is now a CSV-first NIFTY 500 pipeline built for GitHub Actions.
 - `data/portfolio_trades.csv`
 - `data/portfolio_nav.csv`
 - `data/portfolio_signals.csv`
-- `terminal/index.html`
-- `terminal/styles.css`
-- `terminal/app.js`
+- `docs/index.html`
+- `docs/styles.css`
+- `docs/app.js`
 
 
 ## Dashboard
@@ -65,7 +65,7 @@ python export_terminal_data.py
 
 Then open:
 
-- `terminal/index.html`
+- `docs/index.html`
 
 No local database server is needed.
 
@@ -92,6 +92,18 @@ Important behavior:
 
 - if the day is already present in `historical_prices.csv`, the later retry runs skip
 - portfolio monitoring runs only after a confirmed append
+
+
+## GitHub Pages
+
+The published dashboard should be served from:
+
+- `docs/`
+
+That makes it compatible with GitHub Pages branch settings using:
+
+- branch: `main`
+- folder: `/docs`
 
 
 ## Technical Model
