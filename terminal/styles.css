@@ -340,8 +340,22 @@ tr:hover { background: #161616; }
   grid-template-columns: repeat(6, minmax(82px, 1fr));
 }
 
-#stock .scroll {
-  min-height: 120px;
+#stock {
+  overflow: auto;
+}
+
+#stock .stock-split {
+  flex: 0 0 auto;
+  min-height: 330px;
+}
+
+#stock .chart {
+  height: 300px;
+}
+
+#stock .stock-history {
+  flex: 1 1 auto;
+  min-height: 180px;
 }
 
 #industryPanel .scroll {

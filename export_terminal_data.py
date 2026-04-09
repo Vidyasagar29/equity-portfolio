@@ -26,7 +26,7 @@ def write_js_data(path, payload):
     path.write_text(content, encoding="utf-8")
 
 
-def build_history_by_symbol(history_df):
+def build_history_by_symbol(history_df, technical_df):
     if history_df.empty:
         return {}
     history_df = history_df.copy()
@@ -34,6 +34,26 @@ def build_history_by_symbol(history_df):
     history_df = history_df.sort_values(["symbol", "date"])
     history_df["date"] = history_df["date"].dt.strftime("%Y-%m-%d")
     history_df = history_df.rename(columns={"date": "trade_date"})
+
+    if not technical_df.empty:
+        technical_df = technical_df.copy()
+        technical_df["trade_date"] = pd.to_datetime(technical_df["trade_date"], errors="coerce").dt.strftime("%Y-%m-%d")
+        keep_cols = [
+            "trade_date",
+            "symbol",
+            "sma_20",
+            "sma_50",
+            "sma_200",
+            "macd",
+            "macd_signal",
+            "bollinger_upper",
+            "bollinger_middle",
+            "bollinger_lower",
+            "rsi_14",
+        ]
+        technical_df = technical_df.loc[:, [col for col in keep_cols if col in technical_df.columns]]
+        history_df = history_df.merge(technical_df, on=["trade_date", "symbol"], how="left")
+
     records = history_df.to_dict(orient="records")
 
     history_by_symbol = {}
@@ -94,7 +114,7 @@ def export_data():
     history_df = read_csv("historical_prices.csv")
     technical_df = read_csv("technical_indicators.csv")
 
-    history_by_symbol = build_history_by_symbol(history_df)
+    history_by_symbol = build_history_by_symbol(history_df, technical_df)
     metadata = build_metadata(rankings_df, history_df, technical_df)
     portfolio = build_portfolio_payload()
     rankings = rankings_df.to_dict(orient="records") if not rankings_df.empty else []

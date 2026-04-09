@@ -38,7 +38,7 @@ function filteredRankings() {
   return rows;
 }
 
-function drawLineChart(canvas, seriesList) {
+function drawLineChart(canvas, seriesList, options = {}) {
   const ctx = canvas.getContext("2d");
   const ratio = window.devicePixelRatio || 1;
   const width = canvas.clientWidth;
@@ -58,11 +58,11 @@ function drawLineChart(canvas, seriesList) {
 
   const minX = Math.min(...all.map(point => point.x));
   const maxX = Math.max(...all.map(point => point.x));
-  let minY = Math.min(...all.map(point => point.y));
-  let maxY = Math.max(...all.map(point => point.y));
+  let minY = options.minY ?? Math.min(...all.map(point => point.y));
+  let maxY = options.maxY ?? Math.max(...all.map(point => point.y));
   const yPad = (maxY - minY) * 0.08 || 1;
-  minY -= yPad;
-  maxY += yPad;
+  if (options.minY === undefined) minY -= yPad;
+  if (options.maxY === undefined) maxY += yPad;
 
   const x = value => pad.l + ((value - minX) / Math.max(1, maxX - minX)) * (width - pad.l - pad.r);
   const y = value => height - pad.b - ((value - minY) / Math.max(1, maxY - minY)) * (height - pad.t - pad.b);
@@ -215,7 +215,7 @@ function renderStock() {
   sVol.textContent = fmt(ranking.volatility_score);
 
   const points = history.map(row => ({ x: new Date(row.trade_date).getTime(), y: Number(row.close) }));
-  drawLineChart(priceChart, [{ name: "CLOSE", color: "#ffb000", width: 2.5, values: points }]);
+  drawLineChart(priceChart, [{ name: "PRICE", color: "#ffb000", width: 2.5, values: points }]);
   drawScoreBars(indicatorChart, [
     { label: "TREND", value: ranking.trend_score, max: 30, color: "#ffb000" },
     { label: "MOMENTUM", value: ranking.momentum_score, max: 30, color: "#00e676" },
@@ -230,6 +230,10 @@ function renderStock() {
   table(historyTable, [
     { key: "trade_date", label: "DATE" },
     { key: "close", label: "CLOSE", format: value => fmt(value) },
+    { key: "sma_50", label: "SMA50", format: value => fmt(value) },
+    { key: "sma_200", label: "SMA200", format: value => fmt(value) },
+    { key: "macd", label: "MACD", format: value => fmt(value) },
+    { key: "rsi_14", label: "RSI14", format: value => fmt(value) },
     { key: "open", label: "OPEN", format: value => fmt(value) },
     { key: "high", label: "HIGH", format: value => fmt(value) },
     { key: "low", label: "LOW", format: value => fmt(value) },
