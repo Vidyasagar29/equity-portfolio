@@ -26,3 +26,5 @@ date,symbol,action,price,quantity,value,reason
 2026-04-07,TITAN,BUY,4230.6,94,397676.4,Initial portfolio build
 2026-04-27,TITAN,SELL,4441.8,94,417529.2,Recommendation changed to SELL
 2026-04-27,BHARATFORG,BUY,1901.1,234,444857.4,Best available replacement
+2026-04-30,VEDL,SELL,271.55,560,152068.0,Recommendation changed to SELL
+2026-04-30,GLENMARK,BUY,2406.3,70,168441.0,Best available replacement
