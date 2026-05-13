@@ -28,3 +28,5 @@ date,symbol,action,price,quantity,value,reason
 2026-04-27,BHARATFORG,BUY,1901.1,234,444857.4,Best available replacement
 2026-04-30,VEDL,SELL,271.55,560,152068.0,Recommendation changed to SELL
 2026-04-30,GLENMARK,BUY,2406.3,70,168441.0,Best available replacement
+2026-05-13,INDIANB,SELL,813.95,441,358951.95,Recommendation changed to SELL
+2026-05-13,TORNTPHARM,BUY,4295.8,83,356551.4,Best available replacement
