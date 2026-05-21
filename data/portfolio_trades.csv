@@ -30,3 +30,5 @@ date,symbol,action,price,quantity,value,reason
 2026-04-30,GLENMARK,BUY,2406.3,70,168441.0,Best available replacement
 2026-05-13,INDIANB,SELL,813.95,441,358951.95,Recommendation changed to SELL
 2026-05-13,TORNTPHARM,BUY,4295.8,83,356551.4,Best available replacement
+2026-05-21,OIL,SELL,503.5,830,417905.0,Recommendation changed to SELL
+2026-05-21,ADANIPOWER,BUY,219.33,1921,421332.93,Best available replacement
