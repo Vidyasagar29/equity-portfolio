@@ -32,3 +32,5 @@ date,symbol,action,price,quantity,value,reason
 2026-05-13,TORNTPHARM,BUY,4295.8,83,356551.4,Best available replacement
 2026-05-21,OIL,SELL,503.5,830,417905.0,Recommendation changed to SELL
 2026-05-21,ADANIPOWER,BUY,219.33,1921,421332.93,Best available replacement
+2026-06-03,ANANDRATHI,SELL,1785.2,121,216009.2,Recommendation changed to SELL
+2026-06-03,BELRISE,BUY,219.54,984,216027.36,Best available replacement
