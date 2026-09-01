@@ -40,3 +40,5 @@ date,symbol,action,price,quantity,value,reason
 2026-07-27,MOTHERSON,BUY,148.97,2391,356187.27,Best available replacement
 2026-08-07,CCL,SELL,1130.0,349,394370.0,Recommendation changed to SELL
 2026-08-07,SAILIFE,BUY,1365.2,288,393177.6,Best available replacement
+2026-09-01,BSE,SELL,3242.0,135,437670.0,Recommendation changed to SELL
+2026-09-01,HFCL,BUY,236.64,1854,438730.56,Best available replacement
