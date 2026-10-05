@@ -46,3 +46,5 @@ date,symbol,action,price,quantity,value,reason
 2026-09-15,CUMMINSIND,SELL,4874.0,86,419164.0,Recommendation changed to SELL
 2026-09-15,CPPLUS,BUY,3663.4,112,410300.8,Best available replacement
 2026-09-15,SONACOMS,BUY,790.0,519,410010.0,Best available replacement
+2026-10-05,BHARATFORG,SELL,1833.0,234,428922.0,Recommendation changed to SELL
+2026-10-05,WELSPUNLIV,BUY,230.27,1865,429453.55,Best available replacement
