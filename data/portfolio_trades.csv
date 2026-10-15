@@ -56,3 +56,7 @@ date,symbol,action,price,quantity,value,reason
 2026-10-08,AEGISLOG,BUY,1382.3,215,297194.5,Best available replacement
 2026-10-08,REDINGTON,BUY,388.0,769,298372.0,Best available replacement
 2026-10-08,NAVINFLUOR,BUY,8417.5,35,294612.5,Best available replacement
+2026-10-15,POWERINDIA,SELL,28770.0,15,431550.0,Recommendation changed to SELL
+2026-10-15,GVT&D,SELL,3949.0,108,426492.0,Recommendation changed to SELL
+2026-10-15,JINDALSAW,BUY,299.2,1441,431147.2,Best available replacement
+2026-10-15,CRAFTSMAN,BUY,10941.0,39,426699.0,Best available replacement
